@@ -1,0 +1,177 @@
+[
+  {
+    "origin": "New Delhi",
+    "destination": "Mumbai",
+    "distance": 1400,
+    "cost": 5500,
+    "bidirectional": true
+  },
+  {
+    "origin": "New Delhi",
+    "destination": "Jaipur",
+    "distance": 280,
+    "cost": 1200,
+    "bidirectional": true
+  },
+  {
+    "origin": "New Delhi",
+    "destination": "Chandigarh",
+    "distance": 245,
+    "cost": 1000,
+    "bidirectional": true
+  },
+  {
+    "origin": "New Delhi",
+    "destination": "Lucknow",
+    "distance": 555,
+    "cost": 2000,
+    "bidirectional": true
+  },
+  {
+    "origin": "Mumbai",
+    "destination": "Pune",
+    "distance": 150,
+    "cost": 800,
+    "bidirectional": true
+  },
+  {
+    "origin": "Mumbai",
+    "destination": "Goa",
+    "distance": 450,
+    "cost": 2500,
+    "bidirectional": true
+  },
+  {
+    "origin": "Mumbai",
+    "destination": "Ahmedabad",
+    "distance": 525,
+    "cost": 2200,
+    "bidirectional": true
+  },
+  {
+    "origin": "Mumbai",
+    "destination": "Bangalore",
+    "distance": 980,
+    "cost": 4000,
+    "bidirectional": true
+  },
+  {
+    "origin": "Bangalore",
+    "destination": "Chennai",
+    "distance": 350,
+    "cost": 1800,
+    "bidirectional": true
+  },
+  {
+    "origin": "Bangalore",
+    "destination": "Hyderabad",
+    "distance": 575,
+    "cost": 2500,
+    "bidirectional": true
+  },
+  {
+    "origin": "Bangalore",
+    "destination": "Kochi",
+    "distance": 560,
+    "cost": 2800,
+    "bidirectional": true
+  },
+  {
+    "origin": "Chennai",
+    "destination": "Hyderabad",
+    "distance": 625,
+    "cost": 2700,
+    "bidirectional": true
+  },
+  {
+    "origin": "Chennai",
+    "destination": "Kolkata",
+    "distance": 1670,
+    "cost": 6500,
+    "bidirectional": true
+  },
+  {
+    "origin": "Kolkata",
+    "destination": "Lucknow",
+    "distance": 985,
+    "cost": 3800,
+    "bidirectional": true
+  },
+  {
+    "origin": "Hyderabad",
+    "destination": "Pune",
+    "distance": 560,
+    "cost": 2400,
+    "bidirectional": true
+  },
+  {
+    "origin": "Hyderabad",
+    "destination": "Bhopal",
+    "distance": 750,
+    "cost": 3000,
+    "bidirectional": true
+  },
+  {
+    "origin": "Pune",
+    "destination": "Goa",
+    "distance": 450,
+    "cost": 2000,
+    "bidirectional": true
+  },
+  {
+    "origin": "Ahmedabad",
+    "destination": "Jaipur",
+    "distance": 660,
+    "cost": 2600,
+    "bidirectional": true
+  },
+  {
+    "origin": "Ahmedabad",
+    "destination": "Indore",
+    "distance": 440,
+    "cost": 1900,
+    "bidirectional": true
+  },
+  {
+    "origin": "Jaipur",
+    "destination": "Indore",
+    "distance": 590,
+    "cost": 2300,
+    "bidirectional": true
+  },
+  {
+    "origin": "Indore",
+    "destination": "Bhopal",
+    "distance": 195,
+    "cost": 900,
+    "bidirectional": true
+  },
+  {
+    "origin": "Bhopal",
+    "destination": "Lucknow",
+    "distance": 685,
+    "cost": 2800,
+    "bidirectional": true
+  },
+  {
+    "origin": "Kochi",
+    "destination": "Goa",
+    "distance": 600,
+    "cost": 3200,
+    "bidirectional": true
+  },
+  {
+    "origin": "New Delhi",
+    "destination": "Bangalore",
+    "distance": 2150,
+    "cost": 8500,
+    "bidirectional": true
+  },
+  {
+    "origin": "New Delhi",
+    "destination": "Kolkata",
+    "distance": 1500,
+    "cost": 5800,
+    "bidirectional": true
+  }
+]
