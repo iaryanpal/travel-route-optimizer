@@ -4,6 +4,7 @@ Finds shortest and cheapest paths between cities
 """
 
 import heapq
+import itertools
 from graph import Graph
 from trip import Trip
 from city import City
@@ -29,6 +30,7 @@ class PathFinder:
             raise TypeError("Must provide a Graph object")
         
         self.graph = graph
+        self.counter = itertools.count()  # Used for tiebreaking in priority queue
     
     def find_path(self, origin_name, destination_name, optimize_by='distance'):
         """
@@ -98,15 +100,16 @@ class PathFinder:
         # previous_route: stores the route taken to reach each city
         previous_route = {city: None for city in self.graph.get_all_cities()}
         
-        # Priority queue: (distance/cost, city)
-        pq = [(0, origin)]
+        # Priority queue: (distance/cost, counter, city)
+        # counter is used to break ties when distances are equal
+        pq = [(0, next(self.counter), origin)]
         
         # visited set to track processed cities
         visited = set()
         
         while pq:
             # Get city with minimum distance/cost
-            current_distance, current_city = heapq.heappop(pq)
+            current_distance, _, current_city = heapq.heappop(pq)
             
             # Skip if already visited
             if current_city in visited:
@@ -143,7 +146,7 @@ class PathFinder:
                     distances[neighbor] = new_distance
                     previous[neighbor] = current_city
                     previous_route[neighbor] = route
-                    heapq.heappush(pq, (new_distance, neighbor))
+                    heapq.heappush(pq, (new_distance, next(self.counter), neighbor))
         
         # Reconstruct path
         path = []
