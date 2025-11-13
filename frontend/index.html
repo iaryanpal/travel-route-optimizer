@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Route Optimizer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-route header-icon"></i>
+                <h1>Travel Route Optimizer</h1>
+                <p class="subtitle">Find the shortest and cheapest routes between cities</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Route Selection Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h2>Plan Your Journey</h2>
+                </div>
+                <div class="card-body">
+                    <form id="routeForm">
+                        <!-- Origin City -->
+                        <div class="form-group">
+                            <label for="origin">
+                                <i class="fas fa-map-marker-alt origin-icon"></i>
+                                Origin City
+                            </label>
+                            <select id="origin" class="form-control" required>
+                                <option value="">Select starting city...</option>
+                            </select>
+                        </div>
+
+                        <!-- Destination City -->
+                        <div class="form-group">
+                            <label for="destination">
+                                <i class="fas fa-map-marker-alt destination-icon"></i>
+                                Destination City
+                            </label>
+                            <select id="destination" class="form-control" required>
+                                <option value="">Select destination city...</option>
+                            </select>
+                        </div>
+
+                        <!-- Optimization Type -->
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-sliders-h"></i>
+                                Optimize By
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="optimize" value="distance" checked>
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-road"></i>
+                                    Shortest Distance
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="optimize" value="cost">
+                                    <span class="radio-custom"></span>
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Lowest Cost
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary" id="findRouteBtn">
+                            <i class="fas fa-search"></i>
+                            Find Optimal Route
+                        </button>
+
+                        <!-- Compare Button -->
+                        <button type="button" class="btn btn-secondary" id="compareBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                            Compare Both Options
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Calculating optimal route...</p>
+            </div>
+
+            <!-- Results Card -->
+            <div id="results" class="card hidden">
+                <div class="card-header">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Route Found</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Route Summary -->
+                    <div class="route-summary">
+                        <div class="summary-item">
+                            <i class="fas fa-road"></i>
+                            <div>
+                                <span class="label">Total Distance</span>
+                                <span class="value" id="totalDistance">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-rupee-sign"></i>
+                            <div>
+                                <span class="label">Total Cost</span>
+                                <span class="value" id="totalCost">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <i class="fas fa-map-signs"></i>
+                            <div>
+                                <span class="label">Stops</span>
+                                <span class="value" id="totalStops">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Route Path -->
+                    <div class="route-path">
+                        <h3><i class="fas fa-route"></i> Route Path</h3>
+                        <div id="pathDisplay" class="path-display"></div>
+                    </div>
+
+                    <!-- Detailed Segments -->
+                    <div class="route-details">
+                        <h3><i class="fas fa-list"></i> Detailed Route</h3>
+                        <div id="segmentsDisplay"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Results -->
+            <div id="comparison" class="card hidden">
+                <div class="card-header">
+                    <i class="fas fa-balance-scale"></i>
+                    <h2>Comparison: Distance vs Cost</h2>
+                </div>
+                <div class="card-body">
+                    <div class="comparison-grid">
+                        <!-- Distance Optimized -->
+                        <div class="comparison-column">
+                            <h3 class="comparison-title distance-title">
+                                <i class="fas fa-road"></i>
+                                Shortest Distance
+                            </h3>
+                            <div id="distanceResults"></div>
+                        </div>
+
+                        <!-- Cost Optimized -->
+                        <div class="comparison-column">
+                            <h3 class="comparison-title cost-title">
+                                <i class="fas fa-rupee-sign"></i>
+                                Lowest Cost
+                            </h3>
+                            <div id="costResults"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="card error-card hidden">
+                <div class="card-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Error</h2>
+                </div>
+                <div class="card-body">
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                Built with <i class="fas fa-heart"></i> using Dijkstra's Algorithm | 
+                <a href="http://localhost:8000/docs" target="_blank">API Documentation</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
